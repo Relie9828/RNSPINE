@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ApplicationProvider, IconRegistry, } from '@ui-kitten/components';
+import { NavigationContainer } from '@react-navigation/native';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import React, { useState, useEffect } from 'react';
+import { BottomTab } from './src/Navigation';
+import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'react-native';
+import * as eva from '@eva-design/eva';
+import { useFonts } from 'expo-font';
 
-export default function App() {
+
+export default function App () {
+  
+  const STYLES = 'dark-content';
+  const TRANSITIONS = 'fade';
+
+  const [lightMode, setLightMode] = useState(true);
+  const [toggled, setToggled] = useState(false);
+
+  let [fontsLoaded] = useFonts({
+    'Glory-Medium': require('./assets/fonts/Glory-Medium.ttf'),
+    'Nunito-Medium': require('./assets/fonts/Nunito-SemiBold.ttf'),
+    'Glory-BoldItalic': require('./assets/fonts/Glory-BoldItalic.ttf')
+  });
+  if(!fontsLoaded) {
+    return <AppLoading />
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <ApplicationProvider {...eva} theme={eva.dark}>
+      <IconRegistry icons={EvaIconsPack} />
+      <NavigationContainer>
+        <StatusBar barStyle={STYLES} animated={true} showHideTransition={TRANSITIONS} />
+          <BottomTab />
+      </NavigationContainer>
+    </ApplicationProvider>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
