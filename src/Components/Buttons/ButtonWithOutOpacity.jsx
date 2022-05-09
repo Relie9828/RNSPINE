@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React, { useCallback } from 'react';
 import { Dimension } from '../../App Functions/Dimensions';
 import { ButtonColors } from '../Colors/ButtonColors';
-import * as Haptics from 'expo-haptics';
 import { Text } from 'react-native'
 
 const { black, white } = ButtonColors;
@@ -22,7 +21,7 @@ export default function RegularButton (props) {
 
     return (
         <StyledButton {...props}>
-            <Text>
+            <Text {...props}>
                 {props.children}
             </Text>
         </StyledButton>

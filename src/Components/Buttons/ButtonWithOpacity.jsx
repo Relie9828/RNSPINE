@@ -22,7 +22,7 @@ export default function OpacityButton (props) {
 
     return (
         <StyledButton {...props}>
-            <Text>
+            <Text {...props}>
                 {props.children}
             </Text>
         </StyledButton>

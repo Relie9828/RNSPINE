@@ -1,6 +1,6 @@
 export const FontColors = {
-    black: 'black',
-    white: 'white',
+    FontBlack: 'black',
+    FontWhite: 'white',
     primary: '',
     secondary: '',
 } 

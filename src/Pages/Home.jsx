@@ -13,7 +13,9 @@ export default function Home ({ navigation }) {
         <RegularContainer>
             <RegularText>Home</RegularText>
             <OpacityButton onPress={() => console.log('opacity button')}
-            style={{ borderRadius: 10, }}>Button</OpacityButton>
+            style={{ borderRadius: 10, }}>
+                opacity button
+            </OpacityButton>
         </RegularContainer>
     )
 }
